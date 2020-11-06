@@ -18,7 +18,7 @@
 */
 
 
-	$c = ((empty($slugExploded[0]))?"global":$slugExploded[0])."Controller";
+	$c = ucfirst((empty($slugExploded[0]))?"global":$slugExploded[0])."Controller";
 
 	$a = ($slugExploded[1]??"default")."Action";
 
@@ -35,20 +35,39 @@
 
 if( file_exists("./Controllers/".$c.".class.php") ){
 
-	echo "OK";
+	include "./Controllers/".$c.".class.php";
+	if( class_exists($c)){
+		
+		// $c = UserController
+		$cObject = new $c();
+
+		if(method_exists($cObject, $a)){
+
+			//$a => addAction
+			$cObject->$a();
+			
+		}else{
+			show404();
+		}
+
+	}else{
+		show404();
+	}
+
 
 }else if(file_exists("./Controllers/GlobalController.class.php")){
-	
-	include "./Controllers/GlobalController.class.php";
-	$cObject = new GlobalController();
-	$cObject->page404Action();
-
+	show404();
 }else{
 	die("Error !!!");
 }
 
 
 
+function show404(){
+	include "./Controllers/GlobalController.class.php";
+	$cObject = new GlobalController();
+	$cObject->page404Action();
+}
 
 
 

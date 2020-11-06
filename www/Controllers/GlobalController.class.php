@@ -4,7 +4,7 @@ class GlobalController{
 
 	//Method : Action
 	public function defaultAction(){
-
+		echo "Global default";
 	}
 
 	//Method : Action
