@@ -2,14 +2,14 @@
 
 class GlobalController{
 
-
-	public function default(){
+	//Method : Action
+	public function defaultAction(){
 
 	}
 
-
-	public function page404(){
-
+	//Method : Action
+	public function page404Action(){
+		echo "PAGE 404";
 	}
 	
 

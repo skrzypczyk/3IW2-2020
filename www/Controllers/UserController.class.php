@@ -2,13 +2,13 @@
 
 class UserController{
 
-
-	public function default(){
+	//Method : Action
+	public function defaultAction(){
 
 	}
 
-
-	public function add(){
+	//Method : Action
+	public function addAction(){
 
 	}
 	
