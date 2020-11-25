@@ -1,0 +1,19 @@
+/:
+  controller: Global
+  action: default
+
+/404:
+  controller: Global
+  action: page404
+
+/utilisateur:
+  controller: user
+  action: default
+
+/ajout-d-un-utilisateur:
+  controller: user
+  action: add
+
+/afficher-un-utilisateur:
+  controller: user
+  action: show
