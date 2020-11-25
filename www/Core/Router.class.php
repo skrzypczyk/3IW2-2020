@@ -6,6 +6,7 @@ class Router{
 	private $controller;
 	private $routePath = "routes.yml";
 	private $listOfRoutes = [];
+	private $listOfSlugs = [];
 
 
 	public function __construct($slug){
@@ -21,14 +22,18 @@ class Router{
 
 	public function loadYaml(){
 		$this->listOfRoutes = yaml_parse_file($this->routePath);
-		foreach ($this->listOfRoutes as $route) {
+		foreach ($this->listOfRoutes as $slug=>$route) {
 			if(empty($route["controller"]) || empty($route["action"]))
 				die("Parse YAML ERROR");
+			$this->listOfSlugs[$route["controller"]][$route["action"]] = $slug;
 		}
 	}
 
 
 
+	public function getSlug($controller="Global", $action="default"){
+		return $this->listOfSlugs[$controller][$action];
+	}
 
 
 	public function setController($controller){

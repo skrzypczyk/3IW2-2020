@@ -7,13 +7,13 @@
   action: page404
 
 /utilisateur:
-  controller: user
+  controller: User
   action: default
 
 /ajout-d-un-utilisateur:
-  controller: user
+  controller: User
   action: add
 
 /afficher-un-utilisateur:
-  controller: user
+  controller: User
   action: show

@@ -9,6 +9,7 @@ $c = $route->getController();
 $a = $route->getAction();
 
 
+
 if( file_exists("./Controllers/".$c.".class.php") ){
 
 	include "./Controllers/".$c.".class.php";
