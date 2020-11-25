@@ -9,7 +9,12 @@ class UserController{
 
 	//Method : Action
 	public function addAction(){
-		echo "User add";
+		
+		//Récupérer le formulaire
+		//Récupérer les valeurs de l'internaute si il y a validation du formulaire
+		//Vérification des champs (uncitié de l'email, complexité du pwd, ...)
+		//Affichage du résultat
+
 	}
 
 	//Method : Action

@@ -8,18 +8,36 @@ class Router{
 	private $listOfRoutes = [];
 	private $listOfSlugs = [];
 
-
+	/*	
+		- On passe le slug en attribut
+		- Execution de la methode loadYaml
+		- Vérifie si le slug existe dans nos routes -> SINON appel la methode exception4040
+		- call setController et setAction
+	*/
 	public function __construct($slug){
 		$this->slug = $slug;
 		$this->loadYaml();
 
 		if(empty($this->listOfRoutes[$this->slug])) $this->exception404();
 
+		/*
+			$this->listOfRoutes
+								["/liste-des-utilisateurs"]
+								["controller"]
+
+		*/
 		$this->setController($this->listOfRoutes[$this->slug]["controller"]);
 		$this->setAction($this->listOfRoutes[$this->slug]["action"]);
 	}
 
 
+	/*
+		$this->routePath = "routes.yml";	
+		- On transforme le YAML en array que l'on stock dans listOfRoutes
+		- On parcours toutes les routes
+			- Si il n'y a pas de controller ou pas d'action -> die()
+			- Sinon on alimente un nouveau tableau qui aura pour clé le controller et l'action
+	*/
 	public function loadYaml(){
 		$this->listOfRoutes = yaml_parse_file($this->routePath);
 		foreach ($this->listOfRoutes as $slug=>$route) {
@@ -35,7 +53,7 @@ class Router{
 		return $this->listOfSlugs[$controller][$action];
 	}
 
-
+	//ucfirst = fonction upper case first : majuscule la première lettre
 	public function setController($controller){
 		$this->controller = ucfirst($controller)."Controller";
 	}
