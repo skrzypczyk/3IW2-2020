@@ -1,9 +1,9 @@
 /:
-  controller: Global
+  controller: Main
   action: default
 
 /404:
-  controller: Global
+  controller: Main
   action: page404
 
 /utilisateur:

@@ -1,6 +1,9 @@
 <?php
 
-class UserController{
+namespace App\Controller;
+
+class User
+{
 
 	//Method : Action
 	public function defaultAction(){

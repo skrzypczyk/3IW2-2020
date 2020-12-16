@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Core;
+
 class Router{
 
 	private $slug;
@@ -49,13 +52,13 @@ class Router{
 
 
 
-	public function getSlug($controller="Global", $action="default"){
+	public function getSlug($controller="Main", $action="default"){
 		return $this->listOfSlugs[$controller][$action];
 	}
 
 	//ucfirst = fonction upper case first : majuscule la première lettre
 	public function setController($controller){
-		$this->controller = ucfirst($controller)."Controller";
+		$this->controller = ucfirst($controller);
 	}
 
 	public function setAction($action){
