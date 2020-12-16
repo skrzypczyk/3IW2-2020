@@ -17,3 +17,8 @@
 /afficher-un-utilisateur:
   controller: User
   action: show
+
+
+/afficher-les-utilisateurs:
+  controller: User
+  action: showAll

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Core\View;
+
 class User
 {
 
@@ -22,7 +24,19 @@ class User
 
 	//Method : Action
 	public function showAction(){
-		echo "User show";
+		
+		//Affiche la vue user intégrée dans le template du front
+		$view = new View("user"); 
+	}
+
+
+
+	//Method : Action
+	public function showAllAction(){
+		
+		//Affiche la vue users intégrée dans le template du back
+		$view = new View("users", "back"); 
+		
 	}
 	
 }

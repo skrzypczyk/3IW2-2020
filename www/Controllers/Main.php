@@ -3,17 +3,28 @@
 
 namespace App\Controller;
 
+use App\Core\View;
+
+
 class Main
 {
 
 	//Method : Action
 	public function defaultAction(){
-		echo "Main default";
+
+		$pseudo = "Prof"; // Depuis la bdd
+
+		//Affiche la vue home intégrée dans le template du front
+		$view = new View("home"); 
+		$view->assign("pseudo", $pseudo);
+
 	}
 
 	//Method : Action
 	public function page404Action(){
-		echo "PAGE 404";
+		
+		//Affiche la vue 404 intégrée dans le template du front
+		$view = new View("404"); 
 	}
 	
 
