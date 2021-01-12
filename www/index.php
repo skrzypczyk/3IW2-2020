@@ -3,11 +3,13 @@
 namespace App;
 
 use App\Core\Router;
+use App\Core\Helpers;
 
 
 require "Autoload.php";
 Autoload::register();
 
+Helpers::populateEnv();
 
 
 //require "Core/Router.php";

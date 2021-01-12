@@ -1,6 +1,8 @@
 version: '3'
 services:
   web:
+    environment:
+      - DEBUG=1
     build: site
     container_name: apache-3IW
     ports :

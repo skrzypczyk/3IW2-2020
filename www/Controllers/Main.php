@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Core\View;
+use App\Core\Database;
 
 
 class Main
@@ -14,9 +15,15 @@ class Main
 
 		$pseudo = "Prof"; // Depuis la bdd
 
+
+		$sql = new Database();
+
 		//Affiche la vue home intégrée dans le template du front
 		$view = new View("home"); 
 		$view->assign("pseudo", $pseudo);
+
+
+
 
 	}
 
