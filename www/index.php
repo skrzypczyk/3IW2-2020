@@ -3,13 +3,12 @@
 namespace App;
 
 use App\Core\Router;
-use App\Core\Helpers;
-
+use App\Core\ConstantManager;
 
 require "Autoload.php";
 Autoload::register();
 
-Helpers::populateEnv();
+new ConstantManager();
 
 
 //require "Core/Router.php";

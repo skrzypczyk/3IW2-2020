@@ -18,6 +18,8 @@ class Main
 
 		$sql = new Database();
 
+		echo DBHOST;
+
 		//Affiche la vue home intégrée dans le template du front
 		$view = new View("home"); 
 		$view->assign("pseudo", $pseudo);
