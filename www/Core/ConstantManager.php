@@ -54,7 +54,7 @@ class ConstantManager {
 				$line = fgets($handle);
 				preg_match($regex, $line, $results);
 				if(!empty($results[1]) && !empty($results[2]))
-					$this->data[mb_strtoupper($results[1])] = $results[2];
+					$this->data[mb_strtoupper($results[1])] = trim($results[2]);
 
 			}
 		}

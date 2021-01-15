@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Core\View;
+use App\Models\User as UserModel;
 
 class User
 {
@@ -11,6 +12,40 @@ class User
 	public function defaultAction(){
 		echo "User default";
 	}
+
+
+	//Method : Action
+	public function registerAction(){
+		
+
+		$user = new UserModel();
+		$user->setFirstname("Yves");
+		$user->setLastname("SKRZYPCZYK");
+		$user->setEmail("y.skrzypczyk@gmail.com");
+		$user->setPwd("Test1234");
+		$user->setCountry("fr");
+
+
+		$user->save();
+
+		/*
+
+			$page = new Page();
+			$page->setTitle("Nous contacter");
+			$page->setSlug("/contact");
+			$page->save();
+
+
+
+			$user = new User();
+			$user->setId(3);
+			$user->setFirstname("Yves");
+			$user->save();
+
+		*/
+
+	}
+
 
 	//Method : Action
 	public function addAction(){

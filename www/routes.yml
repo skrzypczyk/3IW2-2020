@@ -14,6 +14,11 @@
   controller: User
   action: add
 
+
+/s-inscrire:
+  controller: User
+  action: register
+
 /afficher-un-utilisateur:
   controller: User
   action: show
