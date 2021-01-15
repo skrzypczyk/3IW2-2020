@@ -42,6 +42,7 @@ if( file_exists("./Controllers/".$c.".php") ){
 		// $c = UserController
 		// Instance de la classe : la classe dépend du fichier routes.yml qui lui dépend  du slug
 		//$c  =  User
+
 		$cObject = new $c(); // new App\User
 		//Est-ce que la méthode existe dans l'objet
 		if(method_exists($cObject, $a)){

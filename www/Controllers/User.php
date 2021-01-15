@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Core\View;
+use App\Core\FormValidator;
 use App\Models\User as UserModel;
+use App\Models\Page;
 
 class User
 {
@@ -17,18 +19,16 @@ class User
 	//Method : Action
 	public function registerAction(){
 		
-
-		$user = new UserModel();
-		$user->setFirstname("Yves");
-		$user->setLastname("SKRZYPCZYK");
-		$user->setEmail("y.skrzypczyk@gmail.com");
-		$user->setPwd("Test1234");
-		$user->setCountry("fr");
-
-
-		$user->save();
-
 		/*
+			$user->setFirstname("Yves");
+			$user->setLastname("SKRZYPCZYK");
+			$user->setEmail("y.skrzypczyk@gmail.com");
+			$user->setPwd("Test1234");
+			$user->setCountry("fr");
+
+			$user->save();
+
+
 
 			$page = new Page();
 			$page->setTitle("Nous contacter");
@@ -38,12 +38,37 @@ class User
 
 
 			$user = new User();
-			$user->setId(3);
-			$user->setFirstname("Yves");
+			$user->setId(2); //Attention on doit populate
+			$user->setFirstname("Toto");
 			$user->save();
 
 		*/
 
+
+		$user = new UserModel();
+		$view = new View("register"); 
+
+		$form = $user->formBuilderRegister();
+
+		if(!empty($_POST)){
+			
+			$errors = FormValidator::check($form, $_POST);
+
+			if(empty($errors)){
+				$user->setFirstname($_POST["firstname"]);
+				$user->setLastname($_POST["lastname"]);
+				$user->setEmail($_POST["email"]);
+				$user->setPwd($_POST["pwd"]);
+				$user->setCountry($_POST["country"]);
+
+				$user->save();
+			}else{
+				$view->assign("errors", $errors);
+			}
+		}
+
+		$view->assign("form", $form);
+		$view->assign("formLogin", $user->formBuilderLogin());
 	}
 
 

@@ -16,15 +16,13 @@ class Database{
 
 	 	//  jclm_   App\Models\User -> jclm_User
 	 	$classExploded = explode("\\", get_called_class());
-		$this->table = DBPREFIXE.end($classExploded); //jclm_User
+		$this->table = strtolower(DBPREFIXE.end($classExploded)); //jclm_User
 	}
 
 
 	public function save(){
 
 		//INSERT OU UPDATE
-
-
 
 		//Array ( [firstname] => Yves [lastname] => SKRZYPCZYK [email] => y.skrzypczyk@gmail.com [pwd] => Test1234 [country] => fr [role] => 0 [status] => 1 [isDeleted] => 0)
 
