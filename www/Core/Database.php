@@ -24,19 +24,26 @@ class Database{
 
 		//INSERT OU UPDATE
 
-		print_r(get_object_vars($this)); 
-		//Array ( [firstname] => Yves [lastname] => SKRZYPCZYK [email] => y.skrzypczyk@gmail.com [pwd] => Test1234 [country] => fr [role] => 0 [status] => 1 [isDeleted] => 0 [pdo] => PDO Object ( ) [table] => jclm_User )
 
-		print_r(get_class_vars(get_class()));
-		//Array ( [pdo] => [table] => )
+
+		//Array ( [firstname] => Yves [lastname] => SKRZYPCZYK [email] => y.skrzypczyk@gmail.com [pwd] => Test1234 [country] => fr [role] => 0 [status] => 1 [isDeleted] => 0)
+
+		$column = array_diff_key(
+						get_object_vars($this)
+					, 
+						get_class_vars(get_class())
+				);
 
 
 
 		if( is_null($this->getId()) ){
 			//INSERT
 
-			$query = $this->pdo->prepare("INSERT INTO ".$this->table." (firstname, lastname) 
-						VALUES ( :firstname , :lastname )"); //1 
+
+			$query = $this->pdo->prepare("INSERT INTO ".$this->table." 
+						(".implode(',', array_keys($column)).") 
+						VALUES 
+						(:".implode(',:', array_keys($column)).") "); //1 
 			
 		}else{
 			//UPDATE
@@ -44,7 +51,7 @@ class Database{
 		}
 
 
-		$query->execute( );
+		$query->execute($column);
 
 	}
 
